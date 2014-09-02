@@ -10,7 +10,7 @@ sub new
   
   $args{alien_name} = 'libffi';
   $args{alien_build_commands} = [
-    '%c MAKEILFO=true --with-pic',
+    '%c MAKEILFO=true --with-pic --prefix=%s',
     'make',
   ];
   $args{alien_isolate_dynamic} = 1;

@@ -22,15 +22,15 @@ In your `Build.PL`:
 In your [FFI::Raw](https://metacpan.org/pod/FFI::Raw) script:
 
     use Alien::FFI;
-    use FFI::Sweet;
+    use FFI::Raw;
     
-    my($dll) = Alien::FFI>new->dlls;
+    my($dll) = Alien::FFI->new->dlls;
     FFI::Raw->new($dll, '...', ...);
 
 # DESCRIPTION
 
 This distribution installs libffi so that it can be used by other Perl distributions.  If already
-installed for your operating system, and it can be found, this distribution will use the libarchive
+installed for your operating system, and it can be found, this distribution will use the libffi
 that comes with your operating system, otherwise it will download it from the Internet, build and
 install it fro you.
 

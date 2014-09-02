@@ -19,3 +19,6 @@ perl:
 script:
   - dzil test
 
+env:
+  - ALIEN_FORCE=1
+  - ALIEN_FORCE=0
