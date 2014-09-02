@@ -4,7 +4,7 @@ install:
   - cpanm -n Dist::Zilla
   - dzil authordeps --missing | cpanm -n
   - cpanm -n Test::CPAN::Changes Test::EOL Test::Fixme Test::NoTabs Test::Pod::Spelling::CommonMistakes Test::Spelling Test::Strict Test::Version Test::Vars || true
-#  - cpanm -n Foo::Bar
+  - cpanm -n Alien::Base
 
 perl:
   - "5.8"
@@ -13,12 +13,9 @@ perl:
   - "5.14"
   - "5.16"
   - "5.18"
+  - "5.20"
+  - "5.21"
 
-#env:
-#  - FOO=bar
+script:
+  - dzil test
 
-#before_script: /bin/true
-
-script: HARNESS_IS_VERBOSE=1 prove -lv t xt
-
-#after_script: /bin/true
