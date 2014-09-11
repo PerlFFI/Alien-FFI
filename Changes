@@ -2,5 +2,8 @@ Revision history for {{$dist->name}}
 
 {{$NEXT}}
 
+0.02      2014-09-11 16:56:51 -0400
+  - make Alien::Base a configure requires
+
 0.01      2014-09-11 14:40:53 -0400
   - initial version
