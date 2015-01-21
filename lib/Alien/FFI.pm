@@ -2,10 +2,20 @@ package Alien::FFI;
 
 use strict;
 use warnings;
+use Config;
 use base qw( Alien::Base );
 
 # ABSTRACT: Build and make available libffi
 # VERSION
+
+sub libs
+{
+  shift->SUPER::libs(@_) . (
+       $^O eq 'openbsd'
+    && !$Config{usethreads} 
+    && Alien::FFI->install_type eq 'share' 
+    ? ' /usr/lib/libpthread.a' : '');
+}
 
 =head1 SYNOPSIS
 
