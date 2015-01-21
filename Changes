@@ -2,6 +2,10 @@ Revision history for {{$dist->name}}
 
 {{$NEXT}}
 
+0.03      2015-01-21 07:30:24 -0500
+  - Work-around for unthreaded OpenBSD.  Basically applied same wonky "fix" as I did to FFI::Raw:
+    https://github.com/plicease/p5-FFI-Raw/commit/e223cf61f599ea7f51e5f5ff088de43028c8f506
+
 0.02      2014-09-11 16:56:51 -0400
   - make Alien::Base a configure requires
 
