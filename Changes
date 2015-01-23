@@ -2,6 +2,11 @@ Revision history for {{$dist->name}}
 
 {{$NEXT}}
 
+0.03      2015-01-23 17:14:17 -0500
+  - bump version requirement for Alien::Base 0.007
+    I am pretty sure this will correct a cpan testers failure that I am seeing
+    in FFI::Platypus.
+
 0.03      2015-01-21 07:30:24 -0500
   - Work-around for unthreaded OpenBSD.  Basically applied same wonky "fix" as I did to FFI::Raw:
     https://github.com/plicease/p5-FFI-Raw/commit/e223cf61f599ea7f51e5f5ff088de43028c8f506
