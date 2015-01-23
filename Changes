@@ -2,7 +2,7 @@ Revision history for {{$dist->name}}
 
 {{$NEXT}}
 
-0.03      2015-01-23 17:14:17 -0500
+0.04      2015-01-23 17:15:50 -0500
   - bump version requirement for Alien::Base 0.007
     I am pretty sure this will correct a cpan testers failure that I am seeing
     in FFI::Platypus.
