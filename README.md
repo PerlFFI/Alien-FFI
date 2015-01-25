@@ -18,20 +18,22 @@ In your `Build.PL`:
     
     $build->create_build_script;
 
-In your [FFI::Raw](https://metacpan.org/pod/FFI::Raw) script:
-
-    use Alien::FFI;
-    use FFI::Raw;
-    
-    my($dll) = Alien::FFI->dynamic_libs;
-    FFI::Raw->new($dll, '...', ...);
-
 # DESCRIPTION
 
 This distribution installs libffi so that it can be used by other Perl distributions.  If already
 installed for your operating system, and it can be found, this distribution will use the libffi
 that comes with your operating system, otherwise it will download it from the Internet, build and
 install it fro you.
+
+# SEE ALSO
+
+- [FFI::Platypus](https://metacpan.org/pod/FFI::Platypus)
+
+    Write Perl bindings to non-Perl libraries without C or XS
+
+- [FFI::CheckLib](https://metacpan.org/pod/FFI::CheckLib)
+
+    Check that a library is available for FFI
 
 # AUTHOR
 
