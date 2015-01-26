@@ -23,7 +23,7 @@ In your `Build.PL`:
 This distribution installs libffi so that it can be used by other Perl distributions.  If already
 installed for your operating system, and it can be found, this distribution will use the libffi
 that comes with your operating system, otherwise it will download it from the Internet, build and
-install it fro you.
+install it for you.
 
 # SEE ALSO
 
