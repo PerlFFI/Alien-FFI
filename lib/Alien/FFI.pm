@@ -8,13 +8,28 @@ use base qw( Alien::Base );
 # ABSTRACT: Build and make available libffi
 # VERSION
 
-sub libs
+if($^O eq 'openbsd')
 {
-  shift->SUPER::libs(@_) . (
-       $^O eq 'openbsd'
-    && !$Config{usethreads} 
-    && Alien::FFI->install_type eq 'share' 
-    ? ' /usr/lib/libpthread.a' : '');
+
+  *libs = sub
+  {
+    shift->SUPER::libs(@_) . (
+         $^O eq 'openbsd'
+      && !$Config{usethreads} 
+      && Alien::FFI->install_type eq 'share' 
+      ? ' /usr/lib/libpthread.a' : '');
+  }
+}
+
+if($^O eq 'MSWin32' && $Config{cc} =~ /cl(\.exe)?$/i)
+{
+  *libs = sub
+  {
+    my $libs = shift->SUPER::libs(@_);
+    $libs =~ s{-L}{/LIBPATH:}g;
+    $libs =~ s{-l([A-Za-z]+)}{$1.LIB}g;
+    $libs;
+  }
 }
 
 =head1 SYNOPSIS
