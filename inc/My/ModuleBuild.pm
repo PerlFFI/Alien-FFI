@@ -61,13 +61,18 @@ sub new
   $self;
 }
 
-*do_system = sub
+sub do_system
 {
   my($self, @rest) = @_;
-  require Alien::MSYS;
-  my $msys_path = Alien::MSYS::msys_path();
-  @PATH = grep { $_ ne $msys_path && $_ !~ /GnuWin32/i } @PATH;
-  unshift @PATH, $msys_path;  
+  
+  if($^O eq 'MSWin32')
+  {
+    require Alien::MSYS;
+    my $msys_path = Alien::MSYS::msys_path();
+    @PATH = grep { $_ ne $msys_path && $_ !~ /GnuWin32/i } @PATH;
+    unshift @PATH, $msys_path;  
+  }
+  
   if(ref($rest[0]) eq 'ARRAY')
   {
     my @cmd = map { $self->alien_interpolate($_) } @{ $rest[0] };
@@ -79,6 +84,6 @@ sub new
   {
     $self->SUPER::do_system(@rest);
   }
-} if $^O eq 'MSWin32';
+};
 
 1;
