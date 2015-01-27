@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+  - Require Alien::Base 0.009 which supports multiple argument system
+    This should relax some of the weirdisms in windows
 
 0.04_01   2015-01-25 22:57:40 -0500
   - work around some weirdisms in windows
