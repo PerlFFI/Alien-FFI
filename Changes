@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+0.06      2015-02-03 15:39:48 -0500
   - Ensure that Alien::Base 0.009 is installed in Build.PL
 
 0.05      2015-01-27 05:03:00 -0500
