@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+  - Ensure that Alien::Base 0.009 is installed in Build.PL
 
 0.05      2015-01-27 05:03:00 -0500
   - Require Alien::Base 0.009 which supports multiple argument system

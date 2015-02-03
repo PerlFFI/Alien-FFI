@@ -9,6 +9,18 @@ use base qw( Alien::Base::ModuleBuild );
 
 my $libffi_version = '3.2.1';
 
+# some weird older perl CPAN.pm or Module::Build or something.
+# installs okay with older versions of Alien::Base
+# even though 0.009 is a configure_requires
+# we need to nip it in the bud here else
+# it breaks in FFI::Platypus
+if($] < 5.010 && ! eval { use Alien::Base 0.009 (); 1 })
+{
+  print STDERR "Alien::Base 0.009 really is required as a configure prereq.\n";
+  print STDERR "Please install it first.\n";
+  exit;
+}
+
 sub new
 {
   my($class, %args) = @_;
