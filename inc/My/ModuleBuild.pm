@@ -51,8 +51,6 @@ sub new
       }
       # TODO: also need to copy libffi.a => ffi.lib
     }
-    
-    $args{build_requires}->{'Alien::MSYS'} = 0;
   }
   
   $args{alien_name} = 'libffi';
@@ -69,6 +67,11 @@ sub new
   };
   
   my $self = $class->SUPER::new(%args);
+
+  if($^O eq 'MSWin32' && ($Alien::Base::ModuleBuild::Force || $self->alien_check_installed_version))
+  {
+    $self->_add_prereq( 'build_requires' => 'Alien::MSYS' => 0 );
+  }
   
   $self;
 }
