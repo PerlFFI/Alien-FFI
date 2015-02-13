@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+0.06_01   2015-02-13 10:43:04 -0500
   - Only require Alien::MSYS if we need to do a build from source
 
 0.06      2015-02-03 15:39:48 -0500
