@@ -2,6 +2,9 @@ Revision history for {{$dist->name}}
 
 {{$NEXT}}
 
+0.06_02   2015-02-14 08:21:58 -0500
+  - Mark prereqs as "dynamic" as we need Alien::MSYS on Windows
+
 0.06_01   2015-02-13 10:43:04 -0500
   - Only require Alien::MSYS if we need to do a build from source
 
