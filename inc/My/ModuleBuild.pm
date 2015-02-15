@@ -84,6 +84,6 @@ sub new
   @PATH = grep { $_ ne $msys_path && $_ !~ /GnuWin32/i } @PATH;
   unshift @PATH, $msys_path;
   $self->SUPER::do_system(@rest);
-} if $^O eq 'MSWin32';
+} if $^O eq 'MSWin32' && eval q{ use Alien::MSYS (); 1 };
 
 1;
