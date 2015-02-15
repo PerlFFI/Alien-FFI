@@ -2,8 +2,11 @@ Revision history for {{$dist->name}}
 
 {{$NEXT}}
 
+0.06_04   2015-02-15 08:17:38 -0500
+  - Bump MB requirement up to 0.4202
+
 0.06_03   2015-02-14 23:25:21 -0500
-  - only attempt to use Alien::MSYS if it is installed
+  - Only attempt to use Alien::MSYS if it is installed
 
 0.06_02   2015-02-14 08:21:58 -0500
   - Mark prereqs as "dynamic" as we need Alien::MSYS on Windows
