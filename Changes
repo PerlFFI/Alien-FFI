@@ -2,6 +2,9 @@ Revision history for {{$dist->name}}
 
 {{$NEXT}}
 
+0.06_05   2015-02-16 10:07:27 -0500
+  - Fixed MSWin32 logic, removed MB requirement of 0.4202
+
 0.06_04   2015-02-15 08:17:38 -0500
   - Bump MB requirement up to 0.4202
 
