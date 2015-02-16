@@ -68,7 +68,7 @@ sub new
   
   my $self = $class->SUPER::new(%args);
 
-  if($^O eq 'MSWin32' && ($Alien::Base::ModuleBuild::Force || $self->alien_check_installed_version))
+  if($^O eq 'MSWin32' && ($Alien::Base::ModuleBuild::Force || !$self->alien_check_installed_version))
   {
     $self->_add_prereq( 'build_requires' => 'Alien::MSYS' => 0 );
   }
