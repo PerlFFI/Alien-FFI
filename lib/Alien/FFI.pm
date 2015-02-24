@@ -8,28 +8,47 @@ use base qw( Alien::Base );
 # ABSTRACT: Build and make available libffi
 # VERSION
 
-if($^O eq 'openbsd')
+sub libs
 {
+  my $class = shift;
+  
+  my $libs = $class->SUPER::libs(@_);
 
-  *libs = sub
+  if($class->install_type eq 'share'
+  && !$class->config('finished_installing'))
   {
-    shift->SUPER::libs(@_) . (
-         $^O eq 'openbsd'
-      && !$Config{usethreads} 
-      && Alien::FFI->install_type eq 'share' 
-      ? ' /usr/lib/libpthread.a' : '');
+    my $working_dir = $class->config('working_directory');
+    $libs = "-L$working_dir/.libs -lffi";
   }
-}
-
-if($^O eq 'MSWin32' && $Config{cc} =~ /cl(\.exe)?$/i)
-{
-  *libs = sub
+  
+  if($^O eq 'openbsd' && !$Config{usethreads} && Alien::FFI->install_type eq 'share')
   {
-    my $libs = shift->SUPER::libs(@_);
+    $libs .= ' /usr/lib/libpthread.a';
+  }
+  
+  if($^O eq 'MSWin32' && $Config{cc} =~ /cl(\.exe)?$/i)
+  {
     $libs =~ s{-L}{/LIBPATH:}g;
     $libs =~ s{-l([A-Za-z]+)}{$1.LIB}g;
-    $libs;
   }
+  
+  $libs;
+}
+
+sub cflags
+{
+  my $class = shift;
+  
+  my $cflags = $class->SUPER::cflags(@_);
+  
+  if($class->install_type eq 'share'
+  && !$class->config('finished_installing'))
+  {
+    my $working_dir = $class->config('working_directory');
+    $cflags = "-I$working_dir/include";
+  }
+  
+  $cflags;
 }
 
 =head1 SYNOPSIS

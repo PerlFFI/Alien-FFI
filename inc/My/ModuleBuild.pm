@@ -7,6 +7,8 @@ use Env qw( @PATH );
 use Cwd qw( cwd );
 use base qw( Alien::Base::ModuleBuild );
 
+$ENV{ALIEN_BLIB} = 0;
+
 my $libffi_version = '3.2.1';
 
 # some weird older perl CPAN.pm or Module::Build or something.

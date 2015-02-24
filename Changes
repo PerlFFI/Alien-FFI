@@ -1,6 +1,9 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+  - Turn off Alien::Base blib detection
+  - Make libs and cflags class methods should work correctly
+    before or after ./Build install
 
 0.07      2015-02-16 18:16:54 -0500
   - Promote to production
