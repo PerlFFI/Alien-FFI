@@ -49,6 +49,7 @@ sub cflags
   }
 
   if($class->install_type eq 'share'
+  && $^O eq 'MSWin32'
   && $Config{ccname} eq 'cl')
   {
     $cflags .= " -DFFI_BUILDING";

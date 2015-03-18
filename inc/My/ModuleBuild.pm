@@ -37,7 +37,7 @@ sub new
       push @configure, '--build=x86_64-pc-mingw64';
     }
     
-    if($Config{cc} =~ /cl(\.exe)?$/i)
+    if($Config{ccname} eq 'cl')
     {
       push @configure, qw( --enable-static --disable-shared LD=link ), 'CPP=cl -nologo -EP';
       
