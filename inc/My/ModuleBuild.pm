@@ -87,8 +87,8 @@ sub new
   $args{alien_isolate_dynamic} = 1;
   $args{alien_repository} = {
     protocol => 'http',
-    host     => 'www.mirrorservice.org',
-    location => '/sites/sourceware.org/pub/libffi',
+    host     => 'mirrors.kernel.org',
+    location => '/sourceware/libffi/',
     exact_filename => "libffi-$libffi_version.tar.gz",
   };
   
