@@ -10,6 +10,7 @@ use base qw( Alien::Base::ModuleBuild );
 $ENV{ALIEN_BLIB} = 0;
 
 my $libffi_version = '3.2.1';
+$libffi_version = '3.1' if $^O eq 'MSWin32' && $Config{ccname} eq 'cl';
 
 # some weird older perl CPAN.pm or Module::Build or something.
 # installs okay with older versions of Alien::Base
@@ -65,7 +66,7 @@ sub new
     protocol => 'http',
     host     => 'www.mirrorservice.org',
     location => '/sites/sourceware.org/pub/libffi',
-    exact_filename => 'libffi-3.2.1.tar.gz',
+    exact_filename => "libffi-$libffi_version.tar.gz",
   };
   
   my $self = $class->SUPER::new(%args);
