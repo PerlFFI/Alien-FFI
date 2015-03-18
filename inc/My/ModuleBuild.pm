@@ -61,6 +61,13 @@ sub new
     \@configure,
     'make',
   ];
+  
+  if($libffi_version eq '3.1')
+  {
+    # version 3.1 (only used for MSWin32) generated a bad libffi.pc file
+    unshift @{ $args{alien_build_commands} }, [ $^X, '-ni.bak', '-e', 's/^toolexeclibdir=.*$/toolexeclibdir=\$\{libdir\}/; print', 'libffi.pc.in' ];
+  }
+  
   $args{alien_isolate_dynamic} = 1;
   $args{alien_repository} = {
     protocol => 'http',

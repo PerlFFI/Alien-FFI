@@ -26,7 +26,7 @@ sub libs
     $libs .= ' /usr/lib/libpthread.a';
   }
   
-  if($^O eq 'MSWin32' && $Config{cc} =~ /cl(\.exe)?$/i)
+  if($^O eq 'MSWin32' && $Config{ccname} eq 'cl')
   {
     $libs =~ s{-L}{/LIBPATH:}g;
     $libs =~ s{-l([A-Za-z]+)}{$1.LIB}g;
@@ -47,6 +47,12 @@ sub cflags
     my $working_dir = $class->config('working_directory');
     $cflags = "-I$working_dir/include";
   }
+
+  if($class->install_type eq 'share'
+  && $Config{ccname} eq 'cl')
+  {
+    $cflags .= " -DFFI_BUILDING";
+  }  
   
   $cflags;
 }
