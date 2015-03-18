@@ -3,6 +3,7 @@ package My::ModuleBuild;
 use strict;
 use warnings;
 use Config;
+use Text::ParseWords qw( shellwords );
 use Env qw( @PATH );
 use Cwd qw( cwd );
 use base qw( Alien::Base::ModuleBuild );
@@ -52,8 +53,23 @@ sub new
       {
         push @configure, "CC=$cwd/_alien/libffi-$libffi_version/msvcc.sh";
       }
-      # TODO: also need to copy libffi.a => ffi.lib
+
     }
+  }
+  
+  if($^O eq 'darwin')
+  {
+    # perl -MConfig= -MText::ParseWords=shellwords -E 'my @ldflags = shellwords $Config{ldflags}; while(@ldflags) { my $arg = shift @ldflags; next unless $arg eq "-arch"; push @arch, $arg, shift @ldflags }; say $_ for @arch'
+    my @ldflags = shellwords $Config{ldflags};
+    my @arch;
+    while(@ldflags)
+    {
+      my $arg = shift @ldflags;
+      next unless $arg eq "-arch";
+      push @arch, $arg, shift @ldflags;
+    }
+    push @configure, "LDFLAGS=@arch";
+    push @configure, "CFLAGS=@arch";
   }
   
   $args{alien_name} = 'libffi';
