@@ -91,6 +91,7 @@ sub new
     location => '/sourceware/libffi/',
     exact_filename => "libffi-$libffi_version.tar.gz",
   };
+  $args{alien_stage_install} = 1;
   
   my $self = $class->SUPER::new(%args);
 
