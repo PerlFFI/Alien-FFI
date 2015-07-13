@@ -8,8 +8,6 @@ use Env qw( @PATH );
 use Cwd qw( cwd );
 use base qw( Alien::Base::ModuleBuild );
 
-$ENV{ALIEN_BLIB} = 0;
-
 my $libffi_version = '3.2.1';
 $libffi_version = '3.1' if $^O eq 'MSWin32' && $Config{ccname} eq 'cl';
 

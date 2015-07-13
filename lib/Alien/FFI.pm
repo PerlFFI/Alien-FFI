@@ -14,13 +14,6 @@ sub libs
   
   my $libs = $class->SUPER::libs(@_);
 
-  if($class->install_type eq 'share'
-  && !$class->config('finished_installing'))
-  {
-    my $working_dir = $class->config('working_directory');
-    $libs = "-L$working_dir/.libs -lffi";
-  }
-  
   if($^O eq 'openbsd' && !$Config{usethreads} && Alien::FFI->install_type eq 'share')
   {
     $libs .= ' /usr/lib/libpthread.a';
@@ -41,13 +34,6 @@ sub cflags
   
   my $cflags = $class->SUPER::cflags(@_);
   
-  if($class->install_type eq 'share'
-  && !$class->config('finished_installing'))
-  {
-    my $working_dir = $class->config('working_directory');
-    $cflags = "-I$working_dir/include";
-  }
-
   if($class->install_type eq 'share'
   && $^O eq 'MSWin32'
   && $Config{ccname} eq 'cl')
