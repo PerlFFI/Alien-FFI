@@ -22,3 +22,5 @@ script:
 env:
   - ALIEN_FORCE=1
   - ALIEN_FORCE=0
+
+sudo: false
