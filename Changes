@@ -2,6 +2,9 @@ Revision history for {{$dist->name}}
 
 {{$NEXT}}
 
+0.12      2015-07-15 16:32:45 -0400
+  - Require Alien::Base 0.021 for bug fixes
+
 0.11      2015-04-24 12:41:12 -0400
   - require Alien::Base 0.017 for bug fixes
 
