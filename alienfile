@@ -69,6 +69,11 @@ share {
           });
         }
       };
+      
+      meta->after_hook( gather => sub {
+        my($build) = @_;
+        $build->runtime_prop->{$_} .= " -DFFI_BUILDING" for qw( cflags cflags_static );
+      });
     }
   }
 

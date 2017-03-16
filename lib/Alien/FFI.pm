@@ -49,38 +49,6 @@ sub libs_static
   $libs_static;
 }
 
-sub cflags
-{
-  my $class = shift;
-  
-  my $cflags = $class->SUPER::cflags(@_);
-  
-  if($class->install_type eq 'share'
-  && $^O eq 'MSWin32'
-  && $Config{ccname} eq 'cl')
-  {
-    $cflags .= " -DFFI_BUILDING";
-  }  
-  
-  $cflags;
-}
-
-sub cflags_static
-{
-  my $class = shift;
-  
-  my $cflags_static = $class->SUPER::cflags_static(@_);
-  
-  if($class->install_type eq 'share'
-  && $^O eq 'MSWin32'
-  && $Config{ccname} eq 'cl')
-  {
-    $cflags_static .= " -DFFI_BUILDING";
-  }  
-  
-  $cflags_static;
-}
-
 =head1 SYNOPSIS
 
 In your C<Build.PL>:
