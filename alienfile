@@ -26,7 +26,7 @@ share {
   
     $configure .= ' --build=x86_64-pc-mingw64' if $bits == 64;
     
-    if($Config{ccname} eq 'cl')
+    if(meta->prop->{platform}->{compiler_type} eq 'microsoft')
     {
       $configure .= ' LD=link CPP="cl -nologo -EP';
       
