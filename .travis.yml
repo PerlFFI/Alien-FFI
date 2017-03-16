@@ -2,10 +2,10 @@ language: perl
 sudo: false
 
 install:
-  - cpanm -n Dist::Zilla
+  - cpanm -n Dist::Zilla App::af
+  - af missing | cpanm
   - dzil authordeps --missing | cpanm -n
-  - cpanm -n Pod::Find Test::CPAN::Changes Test::EOL Test::Fixme Test::NoTabs Test::Pod::Spelling::CommonMistakes Test::Spelling Test::Strict Test::Version Test::Vars || true
-  - cpanm -n Alien::Base
+  - dzil listdeps --missing   | cpanm -n
 
 perl:
   - "5.14"
