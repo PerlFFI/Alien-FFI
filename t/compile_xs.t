@@ -1,13 +1,7 @@
 use strict;
 use warnings;
-BEGIN {
-  unless(eval qq{ use Test::Alien; 1 })
-  {
-    require Test::More;
-    Test::More::plan(skip_all => 'test requires Test::Alien');
-  }
-}
-use Test::Stream -V1;
+use Test2::Bundle::Extended;
+use Test::Alien;
 use Alien::FFI;
 
 plan 3;

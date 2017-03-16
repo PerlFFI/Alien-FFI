@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+  - Migrate to Alien::Build + alienfile
 
 0.14      2016-03-01 12:49:45 -0500
   - Use Alien::Base::ModuleBuild for configure_requires instead of Alien::Base

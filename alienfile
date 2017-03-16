@@ -1,0 +1,65 @@
+use alienfile;
+use Config;
+use Text::ParseWords qw( shellwords );
+
+# this alienfile requires Alien::Build 0.26 for features and bugfixes
+
+plugin 'PkgConfig' => 'libffi';
+
+share {
+
+  plugin Download => (
+    url     => 'ftp://sourceware.org/pub/libffi/',
+    version => qr/^libffi-([0-9\.]+)\.tar\.gz$/,
+  );
+  
+  plugin Extract => 'tar.gz';
+  
+  plugin 'Build::Autoconf' => ();
+
+  my $configure = '--disable-shared --enable-static --disable-builddir';
+
+  
+  if($^O eq 'MSWin32')
+  {
+    my $bits = $Config{archname} =~ /^MSWin32-x64/ ? 64 : 32;
+  
+    $configure .= ' --build=x86_64-pc-mingw64' if $bits == 64;
+    
+    if($Config{ccname} eq 'cl')
+    {
+      $configure .= ' LD=link CPP="cl -nologo -EP';
+      
+      if($bits == 64)
+      { $configure .= ' CC="%{cwd}/msvcc.sh -m64"' }
+      else
+      { $configure .= ' CC=%{cwd}/msvcc.sh'        }
+    }
+  }
+  
+  
+  if($^O eq 'darwin')
+  {
+
+    my @ldflags = shellwords $Config{ldflags};
+    my @arch;
+    while(@ldflags)
+    {
+      my $arg = shift @ldflags;
+      next unless $arg eq "-arch";
+      push @arch, $arg, shift @ldflags;
+    }
+    if(@arch)
+    {
+      $configure .= " LDFLAGS='@arch'";
+      $configure .= " CFLAGS='@arch'";
+    }
+  }
+
+  build [
+    "%{configure} $configure",
+    '%{make}',
+    '%{make} install',
+  ];
+
+};
