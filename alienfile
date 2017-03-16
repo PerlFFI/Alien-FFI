@@ -35,9 +35,25 @@ share {
       else
       { $configure .= ' CC=%{cwd}/msvcc.sh'        }
     }
+
+    # 3.2.x broke MSWin32 for some reason.
+    # hopefully 3.3.x or 4.x will fix it.
+    # otherwise this will start failing again
+    meta->around_hook( prefer => sub {
+      my $orig = shift;
+    
+      my $ret = $orig->(@_);
+    
+      $ret->{list} = [
+        grep { $_->{version} ne '3.2' }
+        grep { $_->{version} !~ /^3\.2\./ }
+        @{ $ret->{list} }  
+      ];
+
+      $ret;
+    });  
   }
-  
-  
+
   if($^O eq 'darwin')
   {
 
