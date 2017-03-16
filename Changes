@@ -2,6 +2,7 @@ Revision history for {{$dist->name}}
 
 {{$NEXT}}
   - Fix regression in libffi version downloaded on windows
+  - Fix regressions with Visual C++
 
 0.15_01   2017-03-16 15:42:40 -0400
   - Migrate to Alien::Build + alienfile

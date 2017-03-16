@@ -28,7 +28,8 @@ share {
     
     if(meta->prop->{platform}->{compiler_type} eq 'microsoft')
     {
-      $configure .= ' LD=link CPP="cl -nologo -EP';
+      # Visual C++ is "special"
+      $configure .= ' LD=link CPP="cl -nologo -EP"';
       
       if($bits == 64)
       { $configure .= ' CC="%{cwd}/msvcc.sh -m64"' }
@@ -50,7 +51,24 @@ share {
         ];
 
         $ret;
-      });  
+      });
+      
+      requires 'Path::Tiny' => '0.077';
+      patch sub {
+        my($build) = @_;
+        my $libffi_pc = Path::Tiny->new('libffi.pc.in');
+        if(-f $libffi_pc)
+        {
+          # I think the actual error is somewhere other
+          # than the .pc file, but this works around it
+          # at least in the way that we use it.
+          $build->log('edit libffi.pc.in');
+          $libffi_pc->copy('libffi.pc.in.orig');
+          $libffi_pc->edit_lines(sub {
+            s/^toolexeclibdir=.*$/toolexeclibdir=\${libdir\}/;
+          });
+        }
+      };
     }
   }
 

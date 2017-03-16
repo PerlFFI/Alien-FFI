@@ -28,6 +28,27 @@ sub libs
   $libs;
 }
 
+
+sub libs_static
+{
+  my $class = shift;
+  
+  my $libs_static = $class->SUPER::libs_static(@_);
+
+  if($^O eq 'openbsd' && !$Config{usethreads} && Alien::FFI->install_type eq 'share')
+  {
+    $libs_static .= ' /usr/lib/libpthread.a';
+  }
+  
+  if($^O eq 'MSWin32' && $Config{ccname} eq 'cl')
+  {
+    $libs_static =~ s{-L}{/LIBPATH:}g;
+    $libs_static =~ s{-l([A-Za-z]+)}{$1.LIB}g;
+  }
+  
+  $libs_static;
+}
+
 sub cflags
 {
   my $class = shift;
@@ -42,6 +63,22 @@ sub cflags
   }  
   
   $cflags;
+}
+
+sub cflags_static
+{
+  my $class = shift;
+  
+  my $cflags_static = $class->SUPER::cflags_static(@_);
+  
+  if($class->install_type eq 'share'
+  && $^O eq 'MSWin32'
+  && $Config{ccname} eq 'cl')
+  {
+    $cflags_static .= " -DFFI_BUILDING";
+  }  
+  
+  $cflags_static;
 }
 
 =head1 SYNOPSIS
