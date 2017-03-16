@@ -4,8 +4,6 @@ use Test2::Bundle::Extended;
 use Test::Alien;
 use Alien::FFI;
 
-plan 3;
-
 alien_ok 'Alien::FFI';
 my $xs = do { local $/; <DATA> };
 xs_ok { xs => $xs, verbose => 1 }, with_subtest {
@@ -13,6 +11,8 @@ xs_ok { xs => $xs, verbose => 1 }, with_subtest {
   plan 1;
   is $module->test, 0;
 };
+
+done_testing;
 
 __DATA__
 
