@@ -19,12 +19,6 @@ sub libs
     $libs .= ' /usr/lib/libpthread.a';
   }
   
-  if($^O eq 'MSWin32' && $Config{ccname} eq 'cl')
-  {
-    $libs =~ s{-L}{/LIBPATH:}g;
-    $libs =~ s{-l([A-Za-z]+)}{$1.LIB}g;
-  }
-  
   $libs;
 }
 
@@ -38,12 +32,6 @@ sub libs_static
   if($^O eq 'openbsd' && !$Config{usethreads} && Alien::FFI->install_type eq 'share')
   {
     $libs_static .= ' /usr/lib/libpthread.a';
-  }
-  
-  if($^O eq 'MSWin32' && $Config{ccname} eq 'cl')
-  {
-    $libs_static =~ s{-L}{/LIBPATH:}g;
-    $libs_static =~ s{-l([A-Za-z]+)}{$1.LIB}g;
   }
   
   $libs_static;

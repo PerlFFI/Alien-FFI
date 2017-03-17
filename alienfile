@@ -70,9 +70,11 @@ share {
         }
       };
       
-      meta->after_hook( gather => sub {
+      meta->after_hook( gather_share => sub {
         my($build) = @_;
         $build->runtime_prop->{$_} .= " -DFFI_BUILDING" for qw( cflags cflags_static );
+        $build->runtime_prop->{$_} =~ s{-L}{-LIBPATH:}g for qw( libs libs_static );
+        $build->runtime_prop->{$_} =~ s{-l([A-Za-z]+)}{$1.LIB}g for qw( libs libs_static );
       });
     }
   }
