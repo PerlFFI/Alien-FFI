@@ -8,35 +8,6 @@ use base qw( Alien::Base );
 # ABSTRACT: Build and make available libffi
 # VERSION
 
-sub libs
-{
-  my $class = shift;
-  
-  my $libs = $class->SUPER::libs(@_);
-
-  if($^O eq 'openbsd' && !$Config{usethreads} && Alien::FFI->install_type eq 'share')
-  {
-    $libs .= ' /usr/lib/libpthread.a';
-  }
-  
-  $libs;
-}
-
-
-sub libs_static
-{
-  my $class = shift;
-  
-  my $libs_static = $class->SUPER::libs_static(@_);
-
-  if($^O eq 'openbsd' && !$Config{usethreads} && Alien::FFI->install_type eq 'share')
-  {
-    $libs_static .= ' /usr/lib/libpthread.a';
-  }
-  
-  $libs_static;
-}
-
 =head1 SYNOPSIS
 
 In your C<Build.PL>:

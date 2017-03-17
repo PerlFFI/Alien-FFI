@@ -81,7 +81,6 @@ share {
 
   if($^O eq 'darwin')
   {
-
     my @ldflags = shellwords $Config{ldflags};
     my @arch;
     while(@ldflags)
@@ -94,6 +93,17 @@ share {
     {
       $configure .= " LDFLAGS='@arch'";
       $configure .= " CFLAGS='@arch'";
+    }
+  }
+  
+  if($^O eq 'openbsd')
+  {
+    unless($Config{usethreads})
+    {
+      meta->after_hook( gather_share => sub {
+        my($build) = @_;
+        $build->runtime_prop->{$_} .= " /usr/lib/libpthread.a" for qw( libs libs_static );
+      });
     }
   }
 
