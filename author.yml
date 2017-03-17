@@ -12,7 +12,7 @@ pod_coverage:
   # for either Class or method.
   private:
     - Alien::FFI#libs
-    - Alien::FFI#cflags
+    - Alien::FFI#libs_static
 
 unused_vars:
   skip: 0
