@@ -2,6 +2,9 @@ Revision history for {{$dist->name}}
 
 {{$NEXT}}
 
+0.16      2017-03-23 08:00:19 -0400
+  - Production release identical to 0.15_02
+
 0.15_02   2017-03-16 21:01:05 -0400
   - Fix regression in libffi version downloaded on windows
   - Fix regressions with Visual C++
