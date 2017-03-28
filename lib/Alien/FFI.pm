@@ -7,22 +7,7 @@ use base qw( Alien::Base );
 
 # ABSTRACT: Build and make available libffi
 # VERSION
-
-=head1 SYNOPSIS
-
-In your C<Build.PL>:
-
- use Alien::FFI;
- use Module::Build;
- 
- my $build = Module::Build->new(
-   ...
-   extra_compiler_flags => Alien::FFI->cflags,
-   extra_linker_flags   => Alien::FFI->libs,
-   ...
- );
- 
- $build->create_build_script;
+# ALIEN SYNOPSIS
 
 =head1 DESCRIPTION
 
