@@ -2,6 +2,7 @@ language: perl
 sudo: false
 
 install:
+  - perlbrew list
   - cpanm -n Dist::Zilla App::af
   - af missing | cpanm
   - dzil authordeps --missing | cpanm -n
@@ -19,5 +20,8 @@ script:
   - dzil test -v
 
 env:
-  - ALIEN_INSTALL_TYPE=share
-  - ALIEN_INSTALL_TYPE=system
+  global:
+    - ALIEN_BASE_NO_ABMB=1
+  matrix:
+    - ALIEN_INSTALL_TYPE=share
+    - ALIEN_INSTALL_TYPE=system
