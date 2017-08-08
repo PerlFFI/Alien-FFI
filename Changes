@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+  - Require Alien::Build 0.73 for bug fixes
 
 0.16      2017-03-23 08:00:19 -0400
   - Production release identical to 0.15_02
