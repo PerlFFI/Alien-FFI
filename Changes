@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+0.19      2018-05-19 09:40:13 -0400
   - Identical to 0.18_01 release except for the hardcoded RC0
   - Moved git repository to
     https://github.com/Perl5-FFI/Alien-FFI
