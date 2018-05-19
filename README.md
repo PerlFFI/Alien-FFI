@@ -1,4 +1,4 @@
-# Alien::FFI [![Build Status](https://secure.travis-ci.org/plicease/Alien-FFI.png)](http://travis-ci.org/plicease/Alien-FFI)
+# Alien::FFI [![Build Status](https://secure.travis-ci.org/Perl5-FFI/Alien-FFI.png)](http://travis-ci.org/Perl5-FFI/Alien-FFI)
 
 Build and make available libffi
 
