@@ -7,7 +7,7 @@ my $xs = do { local $/; <DATA> };
 xs_ok { xs => $xs, verbose => 1 }, with_subtest {
   my($module) = @_;
   plan 1;
-  is $module->test, 0;
+  is $module->test1, 0;
 };
 
 done_testing;
@@ -19,20 +19,20 @@ __DATA__
 #include "XSUB.h"
 #include <ffi.h>
 
-unsigned int foo(void)
+unsigned char foo(void)
 {
   return 0xaa;
 }
 
 int
-test(const char *class)
+test1(const char *class)
 {
-  ffi_cif   ffi_cif;
-  ffi_type *args[1];
-  void     *values[1];
-  int       return_value;
+  ffi_cif         ffi_cif;
+  ffi_type       *args[1];
+  void           *values[1];
+  unsigned char   return_value;
   
-  if(ffi_prep_cif(&ffi_cif, FFI_DEFAULT_ABI, 0, &ffi_type_uint32, args) == FFI_OK)
+  if(ffi_prep_cif(&ffi_cif, FFI_DEFAULT_ABI, 0, &ffi_type_uint8, args) == FFI_OK)
   {
     ffi_call(&ffi_cif, (void*) foo, &return_value, values);
   
@@ -49,5 +49,5 @@ test(const char *class)
 
 MODULE = TA_MODULE PACKAGE = TA_MODULE
 
-int test(class);
+int test1(class);
     const char *class;
