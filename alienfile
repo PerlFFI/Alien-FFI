@@ -138,6 +138,10 @@ share {
   }
   
   build [
+    sub {
+      my($build) = @_;
+      $build->runtime_prop->{my_configure} = "%{configure} $configure";
+    },
     "%{configure} $configure",
     '%{make}',
     '%{make} install',
