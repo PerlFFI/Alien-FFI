@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+  - Disable avx and aes instructions on i386
 
 0.19      2018-05-19 09:40:13 -0400
   - Identical to 0.18_01 release except for the hardcoded RC0
