@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+0.20_02   2018-05-29 12:41:38 -0400
   - Add some simple minded detection for avx and aes flags on i386
     Only works on systems with /proc/cpuinfo
 
