@@ -6,7 +6,6 @@ alien_ok 'Alien::FFI';
 my $xs = do { local $/; <DATA> };
 xs_ok { xs => $xs, verbose => 1 }, with_subtest {
   my($module) = @_;
-  plan 1;
   is $module->test1, 0;
 };
 
