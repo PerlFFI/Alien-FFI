@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+0.20_01   2018-05-29 10:02:17 -0400
   - Disable avx and aes instructions on i386
 
 0.19      2018-05-19 09:40:13 -0400
