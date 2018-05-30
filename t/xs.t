@@ -24,7 +24,7 @@ unsigned char foo(void)
 }
 
 int
-test1(const char *class)
+test1(void)
 {
   ffi_cif         ffi_cif;
   ffi_type       *args[1];
@@ -48,5 +48,10 @@ test1(const char *class)
 
 MODULE = TA_MODULE PACKAGE = TA_MODULE
 
-int test1(class);
+int
+test1(class);
     const char *class;
+  CODE:
+    RETVAL = test1();
+  OUTPUT:
+    RETVAL

@@ -26,7 +26,7 @@ unsigned char doublechaar(unsigned char x)
 }
 
 int
-test2(const char *class, unsigned char input_value)
+test2(unsigned char input_value)
 {
   ffi_cif         ffi_cif;
   ffi_type       *args[1];
@@ -53,3 +53,7 @@ int
 test2(class, input_value);
     const char *class;
     unsigned char input_value;
+  CODE:
+    RETVAL = test2(input_value);
+  OUTPUT:
+    RETVAL

@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+  - Diagnostic release
 
 0.20_03   2018-05-29 15:25:11 -0400
   - Added additional tests
