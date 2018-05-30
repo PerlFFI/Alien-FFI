@@ -41,10 +41,7 @@ test2(unsigned char input_value)
     ffi_call(&ffi_cif, (void*) doublechaar, &return_value, values);
     return return_value;
   }
-  else
-  {
-    return -1;
-  }
+  return -1;
 }
 
 MODULE = TA_MODULE PACKAGE = TA_MODULE

@@ -37,13 +37,9 @@ test1(void)
   
     if(return_value == 0xaa)
       return 0;
-    else
-      return 2;
   }
-  else
-  {
-    return 2;
-  }
+  
+  return 2;
 }
 
 MODULE = TA_MODULE PACKAGE = TA_MODULE
