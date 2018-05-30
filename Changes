@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+0.20_04   2018-05-30 07:49:31 -0400
   - Diagnostic release
 
 0.20_03   2018-05-29 15:25:11 -0400
