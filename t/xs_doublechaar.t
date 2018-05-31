@@ -6,8 +6,8 @@ alien_ok 'Alien::FFI';
 my $xs = do { local $/; <DATA> };
 xs_ok { xs => $xs, verbose => 1 }, with_subtest {
   my($module) = @_;
-  is $module->test2(2), 4;
-  is $module->test2(6), 12;
+  is( test2(2), 4  );
+  is( test2(6), 12 );
 };
 
 done_testing;
@@ -44,11 +44,10 @@ test2(unsigned char input_value)
   return -1;
 }
 
-MODULE = TA_MODULE PACKAGE = TA_MODULE
+MODULE = main PACKAGE = main
 
 int
-test2(class, input_value);
-    const char *class;
+test2(input_value);
     unsigned char input_value;
   CODE:
     RETVAL = test2(input_value);
