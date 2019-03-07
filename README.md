@@ -56,7 +56,11 @@ install it for you.
 
 # AUTHOR
 
-Graham Ollis <plicease@cpan.org>
+Author: Graham Ollis <plicease@cpan.org>
+
+Contributors:
+
+Petr Pisar (ppisar)
 
 # COPYRIGHT AND LICENSE
 

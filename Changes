@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+  - Fix test for big-endian systems.  (gh#7 ppisar++)
 
 0.22      2018-08-28 10:37:44 -0400
   - Additional failure diagnostics
