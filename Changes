@@ -2,6 +2,9 @@ Revision history for {{$dist->name}}
 
 {{$NEXT}}
 
+0.24_01   2019-10-25 11:22:26 -0700
+  - For this test release ONLY use libffi 3.3-rc1 share install
+
 0.23      2019-03-07 11:47:25 -0500
   - Fix test for big-endian systems.  (gh#7 ppisar++)
 
