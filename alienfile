@@ -6,10 +6,14 @@ use Text::ParseWords qw( shellwords );
 
 plugin 'PkgConfig' => 'libffi';
 
+meta->around_hook(probe => sub {
+  return 'share';
+});
+
 share {
 
   plugin Download => (
-    url     => 'https://sourceware.org/pub/libffi/',
+    url     => 'https://github.com/libffi/libffi/releases/download/v3.3-rc1/libffi-3.3-rc1.tar.gz',
     version => qr/^libffi-([0-9\.]+)\.tar\.gz$/,
   );
   
