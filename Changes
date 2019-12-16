@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+  - Mark libffi 3.3 as bad on windows for a share install.
 
 0.23      2019-03-07 11:47:25 -0500
   - Fix test for big-endian systems.  (gh#7 ppisar++)
