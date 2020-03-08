@@ -6,36 +6,40 @@ Build and make available libffi
 
 In your Build.PL:
 
-    use Module::Build;
-    use Alien::FFI;
-    my $builder = Module::Build->new(
-      ...
-      configure_requires => {
-        'Alien::FFI' => '0',
-        ...
-      },
-      extra_compiler_flags => Alien::FFI->cflags,
-      extra_linker_flags   => Alien::FFI->libs,
-      ...
-    );
-    
-    $build->create_build_script;
+```perl
+use Module::Build;
+use Alien::FFI;
+my $builder = Module::Build->new(
+  ...
+  configure_requires => {
+    'Alien::FFI' => '0',
+    ...
+  },
+  extra_compiler_flags => Alien::FFI->cflags,
+  extra_linker_flags   => Alien::FFI->libs,
+  ...
+);
+
+$build->create_build_script;
+```
 
 In your Makefile.PL:
 
-    use ExtUtils::MakeMaker;
-    use Config;
-    use Alien::FFI;
-    
-    WriteMakefile(
-      ...
-      CONFIGURE_REQUIRES => {
-        'Alien::FFI' => '0',
-      },
-      CCFLAGS => Alien::FFI->cflags . " $Config{ccflags}",
-      LIBS    => [ Alien::FFI->libs ],
-      ...
-    );
+```perl
+use ExtUtils::MakeMaker;
+use Config;
+use Alien::FFI;
+
+WriteMakefile(
+  ...
+  CONFIGURE_REQUIRES => {
+    'Alien::FFI' => '0',
+  },
+  CCFLAGS => Alien::FFI->cflags . " $Config{ccflags}",
+  LIBS    => [ Alien::FFI->libs ],
+  ...
+);
+```
 
 # DESCRIPTION
 
