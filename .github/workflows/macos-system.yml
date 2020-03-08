@@ -48,6 +48,7 @@ jobs:
 
       - name: Install Static Dependencies
         run: |
+          cpanm -n https://cpan.metacpan.org/authors/id/P/PL/PLICEASE/Alien-Build-2.09_01.tar.gz
           cpanm -n Dist::Zilla
           dzil authordeps --missing | cpanm -n
           dzil listdeps --missing   | cpanm -n
