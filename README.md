@@ -1,4 +1,4 @@
-# Alien::FFI [![Build Status](https://secure.travis-ci.org/Perl5-FFI/Alien-FFI.png)](http://travis-ci.org/Perl5-FFI/Alien-FFI)
+# Alien::FFI [![Build Status](https://secure.travis-ci.org/Perl5-FFI/Alien-FFI.png)](http://travis-ci.org/Perl5-FFI/Alien-FFI) ![windows](https://github.com/Perl5-FFI/Alien-FFI/workflows/windows/badge.svg)
 
 Build and make available libffi
 
