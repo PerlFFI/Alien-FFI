@@ -4,7 +4,8 @@ use Text::ParseWords qw( shellwords );
 
 # this alienfile requires Alien::Build 0.26 for features and bugfixes
 
-plugin 'PkgConfig' => 'libffi';
+plugin 'Probe::Vcpkg' => (name => 'libffi');
+plugin 'PkgConfig'    => 'libffi';
 
 share {
 

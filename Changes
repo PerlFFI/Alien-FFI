@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+  - Support system install with Visual C++ Perl + Vcpkg (gh#9)
 
 0.24      2019-12-16 08:37:04 -0700
   - Mark libffi 3.3 as bad on windows for a share install.
