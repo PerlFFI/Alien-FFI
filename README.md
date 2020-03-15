@@ -4,41 +4,38 @@ Build and make available libffi
 
 # SYNOPSIS
 
+In your Makefile.PL:
+
+```perl
+use ExtUtils::MakeMaker;
+use Alien::Base::Wrapper ();
+
+WriteMakefile(
+  Alien::Base::Wrapper->new('Alien::FFI')->mm_args2(
+    # MakeMaker args
+    NAME => 'Kafka::Librd',
+    ...
+  ),
+);
+```
+
 In your Build.PL:
 
 ```perl
 use Module::Build;
-use Alien::FFI;
+use Alien::Base::Wrapper qw( Alien::FFI !export );
+
 my $builder = Module::Build->new(
   ...
   configure_requires => {
     'Alien::FFI' => '0',
     ...
   },
-  extra_compiler_flags => Alien::FFI->cflags,
-  extra_linker_flags   => Alien::FFI->libs,
+  Alien::Base::Wrapper->mb_args,
   ...
 );
 
 $build->create_build_script;
-```
-
-In your Makefile.PL:
-
-```perl
-use ExtUtils::MakeMaker;
-use Config;
-use Alien::FFI;
-
-WriteMakefile(
-  ...
-  CONFIGURE_REQUIRES => {
-    'Alien::FFI' => '0',
-  },
-  CCFLAGS => Alien::FFI->cflags . " $Config{ccflags}",
-  LIBS    => [ Alien::FFI->libs ],
-  ...
-);
 ```
 
 # DESCRIPTION
