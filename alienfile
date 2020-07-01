@@ -128,15 +128,15 @@ share {
     if($flags{avx} && $flags{aes})
     {
       log "You seem to have avx and aes flags, allowing libffi to detect the CPU";
-      log "see https://github.com/Perl5-FFI/Alien-FFI/issues/6"
+      log "see https://github.com/PerlFFI/Alien-FFI/issues/6"
     }
     else
     {
       # disable avx and aes instructions as the detection logic for libffi seems
-      # to be broken.  See https://github.com/Perl5-FFI/Alien-FFI/issues/6
+      # to be broken.  See https://github.com/PerlFFI/Alien-FFI/issues/6
       log "Could not detect avx and aes flags.  The detection logic is pretty dumb, and may be wrong.";
       log "Please let us know if we got it wrong, and how we can improve it.";
-      log "see https://github.com/Perl5-FFI/Alien-FFI/issues/6";
+      log "see https://github.com/PerlFFI/Alien-FFI/issues/6";
       $configure .= " --with-gcc-arch=pentium4";
     }
   }
