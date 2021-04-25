@@ -119,7 +119,7 @@ share {
     {
       my $fh;
       open($fh, '<', '/proc/cpuinfo');
-      my($flags) = map { s/^.*:\s+//; $_ } grep /^flags/, <$fh>;
+      my($flags) = map { my $x = $_; $x =~ s/^.*:\s+//; $x } grep /^flags/, <$fh>;
       close $fh;
       chomp $flags;
       %flags = map { $_ => 1 } split /\s+/, $flags;

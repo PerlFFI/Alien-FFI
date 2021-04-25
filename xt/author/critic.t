@@ -9,6 +9,6 @@ my $critic = Perl::Critic->new(
   -profile => 'perlcriticrc',
 );
 
-perl_critic_ok ['lib','t'], $critic;
+perl_critic_ok ['alienfile','lib','t'], $critic;
 
 done_testing;
