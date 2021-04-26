@@ -21,6 +21,13 @@ jobs:
 
     strategy:
       fail-fast: false
+      matrix:
+        alien:
+          - install_type: share
+          - install_type: system
+
+    env:
+      ALIEN_INSTALL_TYPE: ${{ matrix.alien.install_type }}
 
     steps:
       - uses: actions/checkout@v2
@@ -46,17 +53,19 @@ jobs:
         uses: actions/cache@v1
         with:
           path: c:\cx
-          key: ${{ runner.os }}-build-${{ hashFiles('perlversion.txt') }}
+          key: ${{ runner.os }}-build-${{ matrix.alien.install_type }}-${{ hashFiles('perlversion.txt') }}
           restore-keys: |
-            ${{ runner.os }}-build-${{ hashFiles('perlversion.txt') }}
+            ${{ runner.os }}-build-${{ matrix.alien.install_type }}-${{ hashFiles('perlversion.txt') }}
 
       - name: Install Static Dependencies
         run: |
           cpanm -n Dist::Zilla
           dzil authordeps --missing | cpanm -n
           dzil listdeps --missing   | cpanm -n
+
       - name: Install Dynamic Dependencies
         run: |
           dzil run --no-build 'cpanm --installdeps .'
+
       - name: Run Tests
         run: dzil test -v
