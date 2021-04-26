@@ -22,6 +22,14 @@ jobs:
 
     strategy:
       fail-fast: false
+      matrix:
+        alien:
+          - install_type: share
+          - install_type: system
+            packages: mingw-w64-x86_64-libffi
+
+    env:
+      ALIEN_INSTALL_TYPE: ${{ matrix.alien.install_type }}
 
     defaults:
       run:
@@ -44,6 +52,7 @@ jobs:
             base-devel
             mingw-w64-x86_64-toolchain
             mingw-w64-x86_64-perl
+            ${{ matrix.alien.packages }}
 
       - name: perl -V
         run: |
@@ -58,9 +67,9 @@ jobs:
         uses: actions/cache@v1
         with:
           path: c:\cx
-          key: ${{ runner.os }}-build-msys2-${{ hashFiles('perlversion.txt') }}
+          key: ${{ runner.os }}-build-msys2-${{ matrix.alien.install_type }}-${{ hashFiles('perlversion.txt') }}
           restore-keys: |
-            ${{ runner.os }}-build-msys2-${{ hashFiles('perlversion.txt') }}
+            ${{ runner.os }}-build-msys2-${{ matrix.alien.install_type }}-${{ hashFiles('perlversion.txt') }}
 
       - name: Install Static Dependencies
         run: |
