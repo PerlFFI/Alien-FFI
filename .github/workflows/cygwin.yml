@@ -23,6 +23,14 @@ jobs:
 
     strategy:
       fail-fast: false
+      matrix:
+        alien:
+          - install_type: share
+          - install_type: system
+            packages: libffi-devel
+
+    env:
+      ALIEN_INSTALL_TYPE: ${{ matrix.alien.install_type }}
 
     defaults:
       run:
@@ -41,7 +49,7 @@ jobs:
         uses: egor-tensin/setup-cygwin@v3
         with:
           platform: x64
-          packages: make perl gcc-core gcc-g++ pkg-config libcrypt-devel libssl-devel git
+          packages: make perl gcc-core gcc-g++ pkg-config libcrypt-devel libssl-devel git ${{ matrix.alien.packages }}
 
       - name: perl -V
         run: |
@@ -58,9 +66,9 @@ jobs:
         uses: actions/cache@v1
         with:
           path: c:\cx
-          key: ${{ runner.os }}-build-cygwin-${{ hashFiles('perlversion.txt') }}
+          key: ${{ runner.os }}-build-cygwin-${{ matrix.alien.install_type }}-${{ hashFiles('perlversion.txt') }}
           restore-keys: |
-            ${{ runner.os }}-build-cygwin-${{ hashFiles('perlversion.txt') }}
+            ${{ runner.os }}-build-cygwin-${{ matrix.alien.install_type }}-${{ hashFiles('perlversion.txt') }}
 
       - name: Install Static Dependencies
         run: |
