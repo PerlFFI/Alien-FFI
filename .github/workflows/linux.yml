@@ -19,9 +19,13 @@ jobs:
         cip:
           - tag: static
             install_type: default
-          - tag: "5.33"
+          - tag: "5.35"
             install_type: system
-          - tag: "5.33"
+          - tag: "5.35"
+            install_type: share
+          - tag: "5.34"
+            install_type: system
+          - tag: "5.34"
             install_type: share
           - tag: "5.32"
             install_type: system
@@ -116,3 +120,8 @@ jobs:
       - name: Build + Test
         run: |
           cip script
+
+      - name: CPAN log
+        if: ${{ failure() }}
+        run: |
+          cip exec bash -c 'cat $HOME/.cpanm/latest-build/build.log'
