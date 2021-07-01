@@ -61,7 +61,7 @@ Author: Graham Ollis <plicease@cpan.org>
 
 Contributors:
 
-Petr Pisar (ppisar)
+Petr Písař (ppisar)
 
 # COPYRIGHT AND LICENSE
 
