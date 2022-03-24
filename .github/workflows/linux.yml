@@ -17,8 +17,6 @@ jobs:
       fail-fast: false
       matrix:
         cip:
-          - tag: static
-            install_type: default
           - tag: "5.35"
             install_type: system
           - tag: "5.35"

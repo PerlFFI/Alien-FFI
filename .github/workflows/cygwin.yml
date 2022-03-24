@@ -49,7 +49,7 @@ jobs:
         uses: egor-tensin/setup-cygwin@v3
         with:
           platform: x64
-          packages: make perl gcc-core gcc-g++ pkg-config libcrypt-devel libssl-devel git ${{ matrix.alien.packages }}
+          packages: make perl gcc-core gcc-g++ pkg-config libcrypt-devel libssl-devel git ${{ matrix.alien.packages }} libffi-devel libarchive-devel
 
       - name: perl -V
         run: |
@@ -76,8 +76,8 @@ jobs:
           cd $( cygpath -u $GITHUB_WORKSPACE )
           yes | cpan App::cpanminus || true
           cpanm -n Dist::Zilla
-          perl -S dzil authordeps --missing | perl -S cpanm -n
-          perl -S dzil listdeps --missing   | perl -S cpanm -n
+          perl -S dzil authordeps --missing | env ALIEN_INSTALL_TYPE=default perl -S cpanm -n
+          perl -S dzil listdeps --missing   | env ALIEN_INSTALL_TYPE=default perl -S cpanm -n
 
       - name: Install Dynamic Dependencies
         run: |

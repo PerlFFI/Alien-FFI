@@ -60,8 +60,8 @@ jobs:
       - name: Install Static Dependencies
         run: |
           cpanm -n Dist::Zilla
-          dzil authordeps --missing | cpanm -n
-          dzil listdeps --missing   | cpanm -n
+          dzil authordeps --missing | env ALIEN_INSTALL_TYPE=default cpanm -n
+          dzil listdeps --missing   | env ALIEN_INSTALL_TYPE=default cpanm -n
 
       - name: Install Dynamic Dependencies
         run: |

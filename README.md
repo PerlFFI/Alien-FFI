@@ -1,4 +1,4 @@
-# Alien::FFI ![linux](https://github.com/PerlFFI/Alien-FFI/workflows/linux/badge.svg) ![windows](https://github.com/PerlFFI/Alien-FFI/workflows/windows/badge.svg) ![macos](https://github.com/PerlFFI/Alien-FFI/workflows/macos/badge.svg) ![cygwin](https://github.com/PerlFFI/Alien-FFI/workflows/cygwin/badge.svg) ![msys2-mingw](https://github.com/PerlFFI/Alien-FFI/workflows/msys2-mingw/badge.svg)
+# Alien::FFI ![static](https://github.com/PerlFFI/Alien-FFI/workflows/static/badge.svg) ![linux](https://github.com/PerlFFI/Alien-FFI/workflows/linux/badge.svg) ![windows](https://github.com/PerlFFI/Alien-FFI/workflows/windows/badge.svg) ![macos](https://github.com/PerlFFI/Alien-FFI/workflows/macos/badge.svg) ![cygwin](https://github.com/PerlFFI/Alien-FFI/workflows/cygwin/badge.svg) ![msys2-mingw](https://github.com/PerlFFI/Alien-FFI/workflows/msys2-mingw/badge.svg)
 
 Build and make available libffi
 
@@ -65,7 +65,7 @@ Petr Písař (ppisar)
 
 # COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2014 by Graham Ollis.
+This software is copyright (c) 2014-2022 by Graham Ollis.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
