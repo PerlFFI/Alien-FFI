@@ -1,4 +1,4 @@
-# Alien::FFI ![static](https://github.com/PerlFFI/Alien-FFI/workflows/static/badge.svg) ![linux](https://github.com/PerlFFI/Alien-FFI/workflows/linux/badge.svg) ![windows](https://github.com/PerlFFI/Alien-FFI/workflows/windows/badge.svg) ![macos](https://github.com/PerlFFI/Alien-FFI/workflows/macos/badge.svg) ![cygwin](https://github.com/PerlFFI/Alien-FFI/workflows/cygwin/badge.svg) ![msys2-mingw](https://github.com/PerlFFI/Alien-FFI/workflows/msys2-mingw/badge.svg)
+# Alien::FFI ![static](https://github.com/PerlFFI/Alien-FFI/workflows/static/badge.svg) ![linux](https://github.com/PerlFFI/Alien-FFI/workflows/linux/badge.svg) ![windows](https://github.com/PerlFFI/Alien-FFI/workflows/windows/badge.svg) ![macos](https://github.com/PerlFFI/Alien-FFI/workflows/macos/badge.svg) ![msys2-mingw](https://github.com/PerlFFI/Alien-FFI/workflows/msys2-mingw/badge.svg)
 
 Build and make available libffi
 
