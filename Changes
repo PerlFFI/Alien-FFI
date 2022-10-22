@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+  - Block share install libffi 3.4.3 on Linux Arm64
   - Move to PerlFFI org
 
 0.25      2020-03-09 03:34:45 -0600

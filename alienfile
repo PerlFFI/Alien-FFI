@@ -110,6 +110,27 @@ share {
     }
   }
 
+  if($Config{archname} =~ /^aarch64-linux/)
+  {
+    # libffi 3.4.3 broken Linux Arm64
+    # https://github.com/PerlFFI/FFI-Platypus/issues/374
+    # For now not black listing it for other Arm64
+    # systems (like macOS) because I did not see the
+    # errors there.
+    meta->around_hook( prefer => sub {
+      my $orig = shift;
+
+      my $ret = $orig->(@_);
+
+      $ret->{list} = [
+        grep { $_->{version} ne '3.4.3' }
+        @{ $ret->{list} }
+      ];
+
+      $ret;
+    });
+  }
+
   if($Config{archname} =~ /^i[3456]86/)
   {
     my %flags;
