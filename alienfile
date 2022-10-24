@@ -11,12 +11,11 @@ plugin 'PkgConfig'    => 'libffi';
 
 share {
 
-  plugin Download => (
-    url     => 'https://sourceware.org/pub/libffi/',
-    version => qr/^libffi-([0-9\.]+)\.tar\.gz$/,
+  plugin 'Download::GitHub' => (
+    github_user => 'libffi',
+    github_repo => 'libffi',
+    asset => 1,
   );
-
-  plugin Extract => 'tar.gz';
 
   plugin 'Build::Autoconf' => ();
 
