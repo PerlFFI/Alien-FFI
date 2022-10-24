@@ -78,6 +78,7 @@ jobs:
           export PATH="/c/cx/bin:$PATH"
           yes | cpan App::cpanminus || true
           cpanm -n Dist::Zilla
+          cpanm -n Alien::Build::Plugin::Download::GitHub
           perl -S dzil authordeps --missing | env ALIEN_INSTALL_TYPE=default perl -S cpanm -n
           perl -S dzil listdeps --missing   | env ALIEN_INSTALL_TYPE=default perl -S cpanm -n
 
