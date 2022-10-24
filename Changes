@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+  - Download from GitHub (gh#30)
 
 0.26      2022-10-22 10:35:50 -0600
   - Block share install libffi 3.4.3 on Linux Arm64 (gh#29)
