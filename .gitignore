@@ -1,2 +1,4 @@
 /Alien-FFI-*
 /.build
+*.old
+*.orig
